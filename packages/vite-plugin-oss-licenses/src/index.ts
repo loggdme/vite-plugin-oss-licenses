@@ -18,7 +18,7 @@ type InternalModule = {
   licenseFiles: string[];
 };
 
-type Module = {
+export type OssLicense = {
   name: string;
   version: string;
   description: string | null;
@@ -39,18 +39,24 @@ const resolveInitialDependencies = (path: string) => {
 
 const resolveNodeModulesFolder = (path: string) => {
   try {
-    const packageFiles = globSync('**/package.json', { cwd: path, absolute: true });
+    const packageFiles = globSync('**/package.json', {
+      cwd: path,
+      absolute: true,
+    });
     return packageFiles
       .map((file) => {
         const pkgJson = JSON.parse(readFileSync(file, 'utf-8'));
-        const licenseFiles = globSync('LICENSE*', { cwd: file.replace('package.json', ''), absolute: true });
+        const licenseFiles = globSync('LICENSE*', {
+          cwd: file.replace('package.json', ''),
+          absolute: true,
+        });
 
         return {
           name: pkgJson.name ?? null,
           version: pkgJson.version ?? null,
           description: pkgJson.description ?? null,
           homepage: pkgJson.homepage ?? null,
-          repository: pkgJson.repository?.url ?? null,
+          repository: pkgJson.repository?.url?.replace('git+', '') ?? null,
           absolutePackagePath: file,
           license: pkgJson.license ?? null,
           licenseFiles: licenseFiles,
@@ -64,7 +70,7 @@ const resolveNodeModulesFolder = (path: string) => {
 };
 
 const recursiveResolveDependencies = (modulesTree: InternalModule[], dependencies: string[]) => {
-  const resolvedDependencies = new Set<Module>();
+  const resolvedDependencies = new Set<OssLicense>();
 
   for (const dependency of dependencies) {
     const module = modulesTree.find((mod) => mod.name === dependency);
@@ -92,14 +98,30 @@ export const vitePluginOSSLicenses = (): Plugin[] => {
     name: 'vite-plugin-oss-licenses',
     resolveId: (id) => (id === virtualModuleId ? resolvedVirtualModuleId : undefined),
     config: () => ({
-      build: { rollupOptions: { output: { manualChunks: (id: string) => (id.includes(virtualModuleId) ? virtualModuleId : undefined) } } },
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: (id: string) => (id.includes(virtualModuleId) ? virtualModuleId : undefined),
+          },
+        },
+      },
     }),
     load: (id) => {
       if (id === resolvedVirtualModuleId) {
         const nodeModules = resolveNodeModulesFolder(resolve(process.cwd(), 'node_modules'));
         const dependencies = resolveInitialDependencies(resolve(process.cwd(), 'package.json'));
         const resolvedDependencies = recursiveResolveDependencies(nodeModules, dependencies);
-        return `export default ${JSON.stringify(resolvedDependencies, null, 2)}`;
+
+        const uniqueDependencies = new Map<string, OssLicense>();
+        resolvedDependencies.forEach((mod) => {
+          if (!uniqueDependencies.has(mod.name)) {
+            uniqueDependencies.set(`${mod.name}-${mod.version}`, mod);
+          }
+        });
+
+        const dedoubledResolvedDependencies = Array.from(uniqueDependencies.values());
+
+        return `export default ${JSON.stringify(dedoubledResolvedDependencies, null, 2)}`;
       }
     },
   };

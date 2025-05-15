@@ -7,7 +7,7 @@
 
 	"explorer.fileNesting.patterns": {
 		"package.json": "tsconfig.json,build.config.ts,bun.lock,biome.json",
-		"vite.config.ts": "index.html"
+		"vite.config.ts": "index.html,components.json"
 	},
 
 	"files.exclude": {

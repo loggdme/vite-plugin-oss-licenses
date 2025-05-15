@@ -33,9 +33,6 @@
         "useImportType": "error",
         "useNodejsImportProtocol": "off",
         "noNonNullAssertion": "off"
-      },
-      "nursery": {
-        "useSortedClasses": "error"
       }
     }
   },
