@@ -1,0 +1,49 @@
+{
+  "folders": [
+    { "path": "." },
+    {
+      "path": "packages/vite-plugin-oss-licenses",
+      "name": "packages/vite-plugin-oss-licenses"
+    },
+   {
+      "path": "playground/react",
+      "name": "playground/react"
+    },
+  ],
+  "settings": {
+    "cSpell.language": "en,de-de",
+    "editor.unicodeHighlight.allowedCharacters": {
+      "️": true
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "workbench.editor.labelFormat": "short",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.autoReveal": false,
+    "files.associations": {
+      "*.css": "tailwindcss"
+    },
+    "biome.enabled": false,
+    "biome.requireConfigFile": true,
+    "biome.projects": [
+      {
+        "name": "packages/vite-plugin-oss-licenses",
+        "path": "packages/vite-plugin-oss-licenses"
+      },
+      {
+        "name": "playground/react",
+        "path": "playground/react"
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "biomejs.biome",
+      "EditorConfig.EditorConfig",
+      "bradlc.vscode-tailwindcss",
+      "streetsidesoftware.code-spell-checker",
+      "github.vscode-github-actions"
+    ]
+  }
+}
