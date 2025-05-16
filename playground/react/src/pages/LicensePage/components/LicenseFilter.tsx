@@ -1,22 +1,18 @@
 import { Filter, Search } from 'lucide-react';
 import type { FC } from 'react';
 
-import { Button } from '$/components/ui/button';
 import { Input } from '$/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '$/components/ui/select';
-import { useFilteredLicenses } from '$/hooks/useFilteredLicenses';
 import { cn } from '$/lib/utils';
-import { useLicenseStore } from '$/stores/licenses.store';
+import { useLicenseStore } from '$/pages/LicensePage/stores/licenses.store';
 
 interface Props {
+  uniqueLicenses: string[];
   className?: string;
 }
 
-export const LicenseFilter: FC<Props> = ({ className }) => {
-  const { uniqueLicenseTypes } = useFilteredLicenses();
-
+export const LicenseFilter: FC<Props> = ({ className, uniqueLicenses }) => {
   const searchQuery = useLicenseStore((state) => state.searchQuery);
-  const viewMode = useLicenseStore((state) => state.viewMode);
   const licenseFilter = useLicenseStore((state) => state.licenseFilter);
 
   return (
@@ -41,32 +37,13 @@ export const LicenseFilter: FC<Props> = ({ className }) => {
           <SelectContent>
             <SelectItem value="all">All Licenses</SelectItem>
 
-            {uniqueLicenseTypes.map((license) => (
+            {uniqueLicenses.map((license) => (
               <SelectItem key={license} value={license}>
                 {license}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
-
-        <div className="flex rounded-md border">
-          <Button
-            variant={viewMode === 'table' ? 'default' : 'ghost'}
-            size="sm"
-            className="rounded-r-none"
-            onClick={() => useLicenseStore.setState({ viewMode: 'table' })}
-          >
-            Table
-          </Button>
-          <Button
-            variant={viewMode === 'cards' ? 'default' : 'ghost'}
-            size="sm"
-            className="rounded-l-none"
-            onClick={() => useLicenseStore.setState({ viewMode: 'cards' })}
-          >
-            Cards
-          </Button>
-        </div>
       </div>
     </div>
   );

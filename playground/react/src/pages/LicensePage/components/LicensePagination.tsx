@@ -9,17 +9,17 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '$/components/ui/pagination';
-import { useFilteredLicenses } from '$/hooks/useFilteredLicenses';
-import { useLicenseStore } from '$/stores/licenses.store';
+import { useLicenseStore } from '$/pages/LicensePage/stores/licenses.store';
 
 interface Props {
+  totalPages: number;
   className?: string;
 }
 
-export const LicensePagination: FC<Props> = ({ className }) => {
-  const { totalPages } = useFilteredLicenses();
-
+export const LicensePagination: FC<Props> = ({ className, totalPages }) => {
   const currentPage = useLicenseStore((state) => state.page);
+
+  const showEllipsis = totalPages > 5 && currentPage < totalPages - 2;
 
   return (
     <Pagination className={className}>
@@ -35,7 +35,7 @@ export const LicensePagination: FC<Props> = ({ className }) => {
           />
         </PaginationItem>
 
-        {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+        {Array.from({ length: Math.min(showEllipsis ? 3 : 5, totalPages) }, (_, i) => {
           let pageNumber: number;
 
           if (totalPages <= 5) {
@@ -64,7 +64,7 @@ export const LicensePagination: FC<Props> = ({ className }) => {
           );
         })}
 
-        {totalPages > 5 && currentPage < totalPages - 2 && (
+        {showEllipsis && (
           <>
             <PaginationItem>
               <PaginationEllipsis />

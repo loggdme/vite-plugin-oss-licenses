@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { useLicenseStore } from '$/stores/licenses.store';
+import { useLicenseStore } from '$/pages/LicensePage/stores/licenses.store';
 import licenses from 'virtual:oss-licenses';
 
 const itemsPerPage = 9;
