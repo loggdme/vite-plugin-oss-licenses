@@ -1,60 +1,60 @@
 {
-  "name": "@loggd/vite-plugin-oss-licenses",
-  "version": "1.0.0",
-  "license": "MIT",
-  "author": "Tobias Kärst",
-  "description": "A Vite plugin to generate a list of open source licenses used in your project.",
-  "keywords": [
-    "vite",
-    "vite-plugin",
-    "oss",
-    "licenses",
-    "open-source"
-  ],
-  "files": [
-    "dist",
-    "client.d.ts"
-  ],
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./client": {
-      "types": "./client.d.ts"
-    }
-  },
-  "scripts": {
-    "dev": "unbuild --stub",
-    "build": "unbuild",
-    "prepublishOnly": "npm run build"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/loggdme/vite-oss-licsenses.git",
-    "directory": "packages/vite-plugin-oss-licenses"
-  },
-  "bugs": {
-    "url": "https://github.com/loggdme/vite-oss-licsenses/issues"
-  },
-  "homepage": "https://github.com/loggdme/vite-oss-licsenses/tree/main/packages/plugin-react#readme",
-  "peerDependencies": {
-    "vite": "^6.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.0.0-beta.3",
-    "@types/node": "^22.15.18",
-    "unbuild": "^3.5.0",
-    "vite": "^6.3.5"
-  },
-  "dependencies": {
-    "glob": "^11.0.2"
-  }
+	"name": "@loggd/vite-plugin-oss-licenses",
+	"version": "1.0.3",
+	"license": "MIT",
+	"author": "Tobias Kärst",
+	"description": "A Vite plugin to generate a list of open source licenses used in your project.",
+	"keywords": [
+		"vite",
+		"vite-plugin",
+		"oss",
+		"licenses",
+		"open-source"
+	],
+	"files": [
+		"dist",
+		"client.d.ts"
+	],
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.mts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		},
+		"./client": {
+			"types": "./client.d.ts"
+		}
+	},
+	"scripts": {
+		"dev": "unbuild --stub",
+		"build": "unbuild",
+		"prepublishOnly": "npm run build"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/loggdme/vite-plugin-oss-licenses.git",
+		"directory": "packages/vite-plugin-oss-licenses"
+	},
+	"bugs": {
+		"url": "https://github.com/loggdme/vite-plugin-oss-licenses/issues"
+	},
+	"homepage": "https://github.com/loggdme/vite-plugin-oss-licenses/blob/main/README.md",
+	"peerDependencies": {
+		"vite": "^6.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.0.0-beta.3",
+		"@types/node": "^22.15.18",
+		"unbuild": "^3.5.0",
+		"vite": "^6.3.5"
+	},
+	"dependencies": {
+		"glob": "^11.0.2"
+	}
 }

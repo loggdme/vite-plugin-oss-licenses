@@ -25,7 +25,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.0.0-beta.3",
-		"@loggd/vite-plugin-oss-licenses": "link:@loggd/vite-plugin-oss-licenses",
+		"@loggd/vite-plugin-oss-licenses": "^1.0.0",
 		"@tailwindcss/vite": "^4.1.7",
 		"@types/node": "^22.15.18",
 		"@types/react": "^19.1.2",
