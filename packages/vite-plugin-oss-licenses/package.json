@@ -46,13 +46,13 @@
 	},
 	"homepage": "https://github.com/loggdme/vite-plugin-oss-licenses/blob/main/README.md",
 	"peerDependencies": {
-		"vite": "^6.0.0"
+		"vite": "^6.0.0 || ^7.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.0.0-beta.6",
 		"@types/node": "^24.0.0",
 		"unbuild": "^3.5.0",
-		"vite": "^6.3.5"
+		"vite": "^7.0.0"
 	},
 	"dependencies": {
 		"glob": "^11.0.2"
