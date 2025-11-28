@@ -1,5 +1,2 @@
-# Dependencies
-node_modules
-
-# Build Outputs
-dist
+# System files
+.DS_Store

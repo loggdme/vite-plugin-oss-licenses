@@ -1,6 +1,9 @@
-import { defineConfig } from 'vite'
-import { vitePluginOSSLicenses } from './packages/vite-plugin-oss-licenses/src/vitePluginOssLicenses'
+import { vitePluginOSSLicenses } from "@loggd/vite-plugin-oss-licenses";
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import viteTsConfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [vitePluginOSSLicenses()],
-})
+  plugins: [react(), tailwindcss(), vitePluginOSSLicenses(), viteTsConfigPaths({ projects: ["./tsconfig.json"] })],
+});

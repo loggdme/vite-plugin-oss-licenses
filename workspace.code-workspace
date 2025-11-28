@@ -1,14 +1,17 @@
 {
   "folders": [
-    { "path": "." },
     {
-      "path": "packages/vite-plugin-oss-licenses",
-      "name": "packages/vite-plugin-oss-licenses"
+      "name": "vite-plugin-oss-licenses",
+      "path": "."
     },
-   {
-      "path": "playground/react",
-      "name": "playground/react"
+    {
+      "name": "package",
+      "path": "package"
     },
+    {
+      "name": "playground",
+      "path": "playground"
+    }
   ],
   "settings": {
     "cSpell.language": "en,de-de",
@@ -25,16 +28,13 @@
       "*.css": "tailwindcss"
     },
     "biome.enabled": false,
-    "biome.requireConfigFile": true,
-    "biome.projects": [
-      {
-        "name": "packages/vite-plugin-oss-licenses",
-        "path": "packages/vite-plugin-oss-licenses"
-      },
-      {
-        "name": "playground/react",
-        "path": "playground/react"
-      }
+    "cSpell.words": [
+      "bradlc",
+      "bunx",
+      "dedoubled",
+      "loggd",
+      "tailwindcss",
+      "ultracite"
     ]
   },
   "extensions": {

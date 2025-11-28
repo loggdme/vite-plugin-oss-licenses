@@ -1,0 +1,37 @@
+{
+  // Editor settings
+  "editor.unicodeHighlight.allowedCharacters": {
+    "️": true
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+
+  // Editor formatting
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit",
+    "source.action.useSortedAttributes.biome": "explicit"
+  },
+
+  // Explorer settings
+  "explorer.fileNesting.patterns": {
+    "package.json": "bun.lock,.gitignore",
+    "build.config.ts": "tsconfig.json",
+    "biome.json": ".editorconfig",
+    "README.md": "LICENSE"
+  },
+  "files.exclude": {
+    "**/node_modules": true
+  },
+
+  // Biome settings
+  "biome.enabled": true,
+  "[typescript][javascript][typescriptreact][json][jsonc][css][html]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  // TypeScript settings
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.autoImportSpecifierExcludeRegexes": ["^(node:)?os$"]
+}

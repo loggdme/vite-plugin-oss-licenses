@@ -2,7 +2,7 @@
 
 👇 Vite plugin that facilitates the direct, seamless import of comprehensive license lists for all direct and transitive dependencies, integrated directly within JavaScript without extra build step.
 
-![demo](./.github/images/demo.png)
+![demo](../../.github/images/demo.png)
 
 ## ✨ Features
 
