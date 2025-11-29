@@ -1,6 +1,6 @@
 {
   "name": "@loggd/vite-plugin-oss-licenses",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "author": "loggd",
   "description": "A Vite plugin to generate a list of open source licenses used in your project.",

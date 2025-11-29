@@ -15,7 +15,6 @@ type InternalModule = {
   repository: string | null;
   absolutePackagePath: string;
   license: string;
-  licenseFiles: string[];
 };
 
 export type OssLicense = {
@@ -26,7 +25,6 @@ export type OssLicense = {
   homepage: string | null;
   repository: string | null;
   license: string;
-  licenses: string[];
 };
 
 const resolveInitialDependencies = (path: string) => {
@@ -48,10 +46,6 @@ const resolveNodeModulesFolder = (path: string) => {
     return packageFiles
       .map((file) => {
         const pkgJson = JSON.parse(readFileSync(file, "utf-8"));
-        const licenseFiles = globSync("LICENSE*", {
-          cwd: file.replace("package.json", ""),
-          absolute: true,
-        });
 
         return {
           name: pkgJson.name ?? null,
@@ -61,7 +55,6 @@ const resolveNodeModulesFolder = (path: string) => {
           repository: pkgJson.repository?.url?.replace("git+", "") ?? null,
           absolutePackagePath: file,
           license: pkgJson.license ?? null,
-          licenseFiles,
         };
       })
       .filter(
@@ -88,7 +81,6 @@ const recursiveResolveDependencies = (modulesTree: InternalModule[], dependencie
         homepage: module.homepage,
         repository: module.repository,
         license: module.license,
-        licenses: module.licenseFiles.map((file) => readFileSync(file, "utf-8")),
       });
       const subDependencies = resolveInitialDependencies(module.absolutePackagePath);
       const subResolvedDependencies = recursiveResolveDependencies(modulesTree, subDependencies, false);

@@ -7,7 +7,6 @@ declare module "virtual:oss-licenses" {
     homepage: string | null;
     repository: string | null;
     license: string;
-    licenses: string[];
   }[];
 
   export default licenses;
